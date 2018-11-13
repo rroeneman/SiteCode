@@ -1,0 +1,83 @@
+<div id=survey-main fxLayout="column" fxLayoutAlign="start center">
+    <div id=survey-inner fxLayout="column">
+        <div>
+            <h2>{{titlefield}}</h2>
+            <p>{{descriptionfield}}</p>
+        </div>
+            <mat-accordion>
+            <mat-expansion-panel [expanded]="showQuestions" (opened)="showQuestions = true"
+                                                            (closed)="showQuestions = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>Questions</mat-panel-title>
+                    <mat-panel-description>
+                        <div fxLayout="row" fxLayoutAlign="space-between center" style="width:100%;">
+                            <!-- Progress slider -->
+                            <div style="margin-top: -1.2em;" fxLayout="column" fxLayoutAlign="space-around stretch">
+                                <mat-slider color="secondary" min="1" max="100" step="1" disabled value="{{progressIndicator}}"></mat-slider>
+                                <p class ="text-dark-opaque" style="font-size:0.8em; margin-top: -1.5em; margin-bottom: -0.2em;">Progress: {{progressIndicator}}% done</p>
+                            </div>
+                            <div fxLayoutAlign="end center" >
+                                <!-- Back button -->
+                                <span *ngIf="showQuestions && previousQuestion">
+                                    <button fxShow fxHide.lt-sm at-mini-fab color="secondary" mat-button (click)="backOneQuestion($event)"><< Back</button>
+                                    <a fxHide fxShow.lt-sm (click)="backOneQuestion($event)">&nbsp;<<&nbsp;</a>
+                                </span>
+                                <!-- Settings button -->
+                                <button fxShow fxHide.lt-sm at-mini-fab color="primary" mat-button (click)="openDialog()"><mat-icon>settings</mat-icon></button>
+                                <a fxHide fxShow.lt-sm (click)="openDialog()"><mat-icon>settings</mat-icon></a>
+                            </div>
+                        </div>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <div fxLayout="column" fxLayoutAlign="space-around stretch">
+                    <div fxFlexAlign="center" style="width:100%">
+                        <!--De spinner-->        
+                        <div *ngIf="showspinner"><mat-progress-spinner class="spinner" color="primary" mode="indeterminate" strokeWidth=5 value=80> </mat-progress-spinner></div>
+                        <!--Het formulier-->
+                        <div id="jsonformdiv" *ngIf="!showspinner">
+                            <div *ngIf="showQuestions;else noFormData">
+                                <json-schema-form 
+                                    [schema]="schema"
+                                    [data]="data"
+                                    [layout] = "form"
+                                    framework="material-design"
+                                    (onSubmit)="submitFunction($event)"
+                                    (onChanges)="onChangesFunction($event)"
+                                    (isValid)="isValid"
+                                    (validationErrors)="validationErrors($event)">
+                                </json-schema-form>
+                                <div *ngIf="NoDataSelectedWarning" >  <font color="red">[Please select or enter some data] </font></div>
+                            </div>
+                            <ng-template #noFormData>
+                                <p>There are no questions, please go to controls or result section...</p>
+                            </ng-template>
+                        </div>
+                    </div>
+                </div>
+
+            </mat-expansion-panel>
+            <mat-expansion-panel [expanded]="showResult" (opened)="showResult = true"
+                                                            (closed)="showResult = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>Results</mat-panel-title>
+                    <mat-panel-description>
+                        <div *ngIf="!showResult">Show - intermediate - results</div>
+                        <div *ngIf="previousQuestion && showResult" style="margin-top: -0.5em;"><button mat-raised-button color="secondary" (click)="backToQuestions($event)"><< Back to last question</button></div>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <!--previousQuestion only becomes active when at least 1 question has been aswered, but relies on correct formdata -->
+                <div fxLayout="column" fxLayoutAlign="space-around stretch">
+                    <div *ngIf="!previousQuestion" fxFlexAlign="center">
+                        There are no results yet. 
+                        <br />
+                        <button mat-raised-button color="primary" (click)="showQuestions = true;">Go to questions</button>
+                    </div>
+                    <div *ngIf="previousQuestion" fxFlexAlign="center">
+                        <dynamic-content-survey [setActive]="showResult" [currentFingerprintKey]="currentFingerprintKey"></dynamic-content-survey>
+                    </div>
+                </div>
+             </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+</div>

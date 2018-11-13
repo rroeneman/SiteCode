@@ -1,0 +1,42 @@
+
+
+<div fxLayout="column" fxLayoutAlign="space-around stretch">
+    
+    <div fxLayout="row" fxLayoutAlign="start center">
+        <form novalidate [formGroup]="FPForm" (ngSubmit)="FPSubmit()">
+            <mat-form-field>
+                <input matInput [formControl]="FPFormControl" FPFormValidator >
+                <mat-hint>Fingerprint starting question.</mat-hint>
+            </mat-form-field>
+            <button mat-mini-fab color="primary" [disabled]="FPForm.invalid" type="submit">Go</button>
+        </form>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+        <button mat-icon-button type="button" onclick="document.getElementById('answersToUpload').click()"><mat-icon>receipt</mat-icon></button> 
+               <input id="answersToUpload" type="file" style="display:none;" (change)="AnswersFileHandler($event)">
+        <p><a onclick="document.getElementById('answersToUpload').click()">Upload stored answers</a></p>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+        <button mat-icon-button color="secondary" (click)="AnswersSave()"><mat-icon>save</mat-icon></button>
+        <p><a (click)="AnswersSave()">Save answers to file on disk</a></p>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+        <button mat-icon-button color="secondary" (click)="eraseAll()"><mat-icon>delete</mat-icon></button>
+        <p><a (click)="eraseAll()">Erase all and reload</a></p>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+        <button mat-icon-button color="secondary" (click)="restartQ()"><mat-icon>cached</mat-icon></button>
+        <p><a (click)="restartQ()">Restart questionnaire</a></p>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+        <button mat-icon-button type="button" onclick="document.getElementById('fileToUpload').click()"><mat-icon>add</mat-icon></button>
+            <input id="fileToUpload" type="file" style="display:none;" (change)="QuestionsFileHandler($event)">
+        <p><a onclick="document.getElementById('fileToUpload').click()">Upload questionnaire</a></p>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+        <button  mat-icon-button type="button" mat-dialog-close="exit"><mat-icon>exit_to_app</mat-icon></button>
+        <p>Exit</p>
+    </div>
+</div>
+

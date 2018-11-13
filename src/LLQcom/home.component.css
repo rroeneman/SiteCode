@@ -1,0 +1,191 @@
+ /** 
+ * FIRST-MAIN
+ *
+ */
+
+ #first-main{
+  font-size: 1rem;
+}
+
+#first-main{
+  /*height: calc(100vh - 160px);*/
+  width: 100%;
+  /*display: flex;*/
+}
+@media only screen and (max-width: 599px) {
+  #first-main {
+    /*height: calc(100vh - 110px);*/
+  }
+}
+
+#first-main .maingraphic{
+  height: 504px;
+  width:100%;
+  position: relative;
+  background-image: url("../../assets/img/main-front.png");
+  background-repeat: no-repeat;
+  background-size: initial;
+  background-position: center; 
+}
+#first-main .maingraphic::before {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 140px;
+  background: rgba(white, 1);
+  content: '';
+}
+#first-main .maingraphic::after {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 140px;
+  background: rgba(white, 1);
+  content: '';
+}
+
+#first-main .maingraphic h1, #first-main .maingraphic h2{
+  background-color: rgba(0,100,150, 0.90);
+  padding: 5px 21px;
+  text-align: center;
+}
+#first-main #intro{
+  padding: 5vh 0;
+}
+
+#first-main .introblox{
+  padding: 5vh 3vh 10vh 3vh;
+  max-width: 360px;
+  position: relative;
+}
+#first-main .introblox p{
+  margin-left: 0px;
+}
+
+#first-main .introaction{
+  position: absolute;
+  bottom: 3vh;
+  display:table;
+}
+#first-main .introaction img{
+  display: table-cell;
+}
+#first-main .introaction span{
+  padding-left: 5px;
+  display:table-cell;
+  vertical-align: middle;
+}
+#first-main .introaction span a{
+  color:inherit;
+  text-decoration: none;
+}
+
+#first-main #motto #inner{
+  padding: 6vh 0 0 0;
+}
+
+#first-main #motto #inner .item{
+  /*width:50vw; inline zodat alleen het plaatje het heeft, valt dus weg bij mobile mode */
+  margin:3vw;
+}
+#first-main #motto #inner .item img{
+  width:40vw;
+  height: auto;
+  object-fit: scale-down;
+  -o-object-fit: scale-down;
+}
+#first-main #motto #inner .item div{
+  max-width: 496px;
+  letter-spacing: 0.05rem;
+}
+
+#first-main .mat-toolbar .mat-toolbar-row {
+  /*-webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);*/
+  justify-content: center;
+  letter-spacing: 0.1em;
+}
+
+#first-main #clients{
+  height:35vh;
+}
+#first-main #clients-wrapper,
+#first-main #clients{
+  background-color:white;
+  width: 100%;
+}
+#first-main #clients-wrapper {
+  padding: 5vh 0;
+  display: block;
+}
+
+#first-main #clients img{
+  margin: 2vw;
+  object-fit: scale-down;
+  -o-object-fit: scale-down;
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+ /*SCROLL TEXT TO LEFT*/
+#first-main #clients .scroll-left {
+    height:35vh;
+    overflow: hidden;
+    height: 100%;
+  }
+#first-main #clients .scroll-left img {
+      display: inline-block;
+      white-space: nowrap;
+  
+      /*position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    line-height: 50px;
+    text-align: center;
+    /* Starting position */
+    -moz-transform:translateX(100%);
+    -webkit-transform:translateX(100%); 
+    transform:translateX(100%);
+    /* Apply animation to this element */ 
+    -moz-animation: scroll-left 15s linear infinite;
+    -webkit-animation: scroll-left 15s linear infinite;
+    animation: scroll-left 15s linear infinite;
+    }
+    /* Move it (define the animation) */
+    @-moz-keyframes scroll-left {
+      0% { -moz-transform: translateX(100%); }
+      100% { -moz-transform: translateX(-100%); }
+    }
+    @-webkit-keyframes scroll-left {
+      0% { -webkit-transform: translateX(100%); }
+      100% { -webkit-transform: translateX(-100%); }
+    }
+    @keyframes scroll-left {
+      0% { 
+      -moz-transform: translateX(100%); /* Browser bug fix */
+      -webkit-transform: translateX(100%); /* Browser bug fix */
+      transform: translateX(100%); 
+      }
+      100% { 
+      -moz-transform: translateX(-100%); /* Browser bug fix */
+      -webkit-transform: translateX(-100%); /* Browser bug fix */
+      transform: translateX(-100%); 
+      }
+    }
+
+/*Bar sticky class is overridden in Styles for small screen heights*/
+/*
+.main-toolbar-sticky{
+  position:sticky;
+  top: 42px;
+}
+*/
+
+
+

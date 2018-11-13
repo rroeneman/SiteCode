@@ -1,0 +1,27 @@
+{
+  "paths": { "@angular/*": ["./node_modules/@angular/*"] },
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "lib": [ "es2015", "dom" ],
+    "noImplicitAny": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noStrictGenericChecks": true, 
+    "outDir": "app/"
+    },
+    "angularCompilerOptions": {
+      "genDir": "./docs",
+      "skipMetadataEmit": false, // <------- WAS PREVIOUSLY true
+      "skipTemplateCodegen": true,
+      "fullTemplateTypeCheck": true,
+      "enableIvy": false, //BELANGRIJK OM DIT WEER NAAR TRUE TE KRIJGEN, MAAR NU NOG TEVEEL STORINGEN
+      "preserveWhitespaces": false
+    },
+  "exclude": [
+    "node_modules"
+  ]
+}

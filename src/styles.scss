@@ -1,0 +1,305 @@
+/*SOURCE:https://material.angular.io/guide/theming*/
+
+@import '~@angular/material/theming';
+//@import '~material-design-icons/iconfont/material-icons.css';
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons'); //Icons via import omdat dit beter werkt met webpack
+
+/**
+* Plus imports for other components in your app.
+* Include the common styles for Angular Material. We include this here so that you only
+* have to load a single css file for Angular Material in your app.
+* Be sure that you only ever include this mixin once!
+*/
+
+@include mat-core();
+
+/* Define the palettes for your theme using the Material Design palettes available in palette.scss
+ (imported above). For each palette, you can optionally specify a default, lighter, and darker
+ hue.
+ */
+$llq-app-primary: mat-palette($mat-indigo, 500);
+$llq-app-accent:  mat-palette($mat-teal, 500);
+$llq-app-warn:    mat-palette($mat-deep-orange,500);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$llq-app-theme: mat-light-theme($llq-app-primary, $llq-app-accent, $llq-app-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($llq-app-theme);
+
+/**
+* THEME CUSTOM COLORS
+*/
+//Primary
+.back-blue{  background: rgb(1, 52, 118); }
+.back-blue-dark { background: rgb(0, 15, 74); }
+.text-blue-dark {color:  rgb(0, 15, 74); }
+.back-blue-light {  background: rgb(0, 146, 199); }
+//Secondary
+//Tertiare
+.text-orange{ color: rgb(252, 111, 42)}
+//Wit - grijs - zwart
+.back-black { background: rgb(65, 63, 63);}
+.back-white { background: rgba(white, 0.97) }
+.text-light {color: rgba(white, 0.87);}
+.text-dark { color: rgba(black, 0.87); } //same as light theme foreground text
+.text-dark-opaque { color: rgba(black, 0.38);}
+
+.back-green { background: map-get($mat-teal, 800); }
+
+
+/**
+* TYPOGRAPHY
+*
+*/
+// Define a custom typography config that overrides the font-family as well as the
+// `headlines` and `body-1` levels.
+
+// ===> FIRST SELECT FONT AND WEIGHT AND LOAD INTO HTML: https://fonts.google.com/?selection.family=Roboto:400,500,700
+@import url('https://fonts.googleapis.com/css?family=Marcellus+SC|Roboto:300,400,500');
+//FROM _theming.scss (angular/material) WEIGHTS USED ARE 300/400/500
+// CHECK font-weight in whole project
+$custom-typography: mat-typography-config(
+  $font-family: Roboto,
+  $headline: mat-typography-level(32px, 48px, 700),
+  $body-1: mat-typography-level(16px, 24px, 500)
+);
+
+// Override the typography in the core CSS.
+@include mat-core($custom-typography);
+
+// Override typography CSS classes (e.g., mat-h1, mat-display-1, mat-typography, etc.).
+//@include mat-base-typography($custom-typography);
+
+// Override typography for a specific Angular Material components.
+//@include mat-checkbox-typography($custom-typography);
+
+// Override typography for all Angular Material, including mat-base-typography and all components.
+//@include angular-material-typography($custom-typography);
+
+
+/**
+* REGULAR CSS FOR SIDE WIDE CSS
+*
+* Device resolution (also mobile):
+* Width:  window.screen.width * window.devicePixelRatio 
+* Height: window.screen.height * window.devicePixelRatio
+*
+* AVAILABLE width/height in browser window:
+* FXLayout uses available width!!
+* window.screen.availHeight
+* window.screen.availWidth
+*/
+
+//see: https://www.w3schools.com/css/css_rwd_grid.asp
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  min-height: 100vh;
+  min-width: 303px;
+  background-color: white;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+html{font-size: 17px;}
+/* Document level adjustments */
+@media (max-width: 900px) {
+  html { font-size: 15px; }
+}
+@media (max-width: 400px) {
+  html { font-size: 13px; }
+}
+@media (max-width: 300px) {
+  html { font-size: 10px; }
+}
+
+body{
+  font-size:1rem;
+  overflow-y: scroll; //vertical
+  overflow-x: hidden; //horizontal
+}
+  @media only screen and (max-width: 300px) {
+    html, body {
+      width:100vw; /*VEROORZAAKT HORIZONTALE SCROLLBAR, nodig om verder omlaag scalen mogelijk te maken zonder site te breaken*/
+    }
+  }
+  @media (max-width: 599px) {
+    body { 
+      overflow-y: hidden;
+      overflow-x: scroll; 
+    }
+    html{
+      overflow-y: scroll;
+    }
+  }
+
+/*
+ * Make the Component injected by Router Outlet full height: 
+ * See: https://blog.thecodecampus.de/material-2-sticky-footer-mat-sidenav/
+ */
+ main{
+  display: block;
+  flex-direction: column;
+  > *:not(router-outlet) {
+    flex: 1;
+    display: block;
+  }
+}
+
+/* FONT of types will scale with modules, just set the font in the top class/div of the component as ..rem  */
+
+h1, .title {
+  font-family: 'Marcellus SC', serif;
+  font-size: 2.8rem;
+  letter-spacing: 0.1em;
+  margin-top: 16px; 
+  margin-left:14px;
+  margin-right: 14px;
+  margin-bottom: 16px;
+  display: block;
+}
+h2, .mat-toolbar h2{
+  font-family: 'Marcellus SC', serif;
+  font-size: 1.7rem;
+}
+h3{
+  font-size: 1.3em;
+  margin-top: -4px;
+  margin-left: 14px;
+  margin-right: 14px;
+  display: block;
+}
+p{
+  margin-left: 14px;
+  display: block;
+}
+p, .text-normal{
+  font-size: 1em;
+}
+.text-small{
+  font-size: 0.7em !important;
+}
+
+.last-call-to-action-bar{
+  height: 96px;
+}
+
+footer{
+  font-size: 0.75rem; //rem = root em, ie the html font-size, not relative to component but to full site
+  text-align: center; 
+  padding:2em;
+  height: 85px;
+}
+
+.example-fill-remaining-space { flex: 1 1 auto;}
+.sticky{
+  position: fixed;
+  top: 0;
+}
+
+/** HEADER BAR AND MAIN MENU */
+header{
+  width:100%;
+  max-width: 1245px;
+}
+
+header .mat-button {
+  font-family: 'Marcellus SC', serif;
+  font-size: 1.2rem;
+}
+
+header .mat-toolbar{
+  width:100%;
+  height: 168px;
+  padding: 0 15px;
+  background: inherit;
+}
+
+header #headerbar-right{
+  height: 100%;
+  padding-bottom: 3vh;
+  padding-top:0px;
+}
+header #headerbar-right-top{
+  height: 40px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 0 15px 0 3px;
+}
+
+header #headerbar-right-top a{
+margin-right: 8px;
+}
+
+header #mobile{
+  width:100%;
+  height: 120px;
+  padding: 0 8vw;
+  background: inherit;
+}
+
+.fullscreen{
+  min-height: calc(100vh - 168px);
+}
+.fullscreen-mobile{
+  min-height: calc(100vh - 120px);
+}
+
+#first-main menu-main button{
+  /*top: calc(100vh - 300px);*/
+  border-radius: 10px;
+  min-width: 12vw;
+  min-height: 10vh;
+}
+
+/*HINT TEXT UNDER QUESTIONS (the 'descriptions') to be cut-off or otherwise mess up layout. */
+#survey-main .mat-hint {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+#survey-main .mat-raised-button{
+  height: 2.1rem;
+  font-size: 0.8rem;
+  line-height: 0;
+}
+
+/*EXPANSION PANEL FONT*/
+.mat-expansion-panel-header, 
+.mat-form-field-infix 
+  { font-size: 1rem;}
+
+
+/*
+//Correct for some jumping of lines when topbar is set to sticky
+.sticky-padding-top{  padding-top:64px;  }
+
+//screens with not much height (ie mobile landscape) don't make topbar sticky
+@media screen and (max-height: 450px) {
+  .sticky, .main-toolbar-sticky{
+    position: inherit !important;
+    top: inherit !important;
+  }
+  .sticky-padding-top{  padding-top:0px;  } //remove correction on small screens, otherwise a white bar occurs
+  //correct images on main screen when window goes to less of height
+  #first-main .item{
+    margin: 3% 0 3% 0 !important;
+  }
+}
+*/
+
+/** FLOATING BUTTION */
+/*
+#appsfloat .mat-fab {
+  width: 25vw;
+  max-width: 150px;
+  position:fixed; 
+  top:75vh; 
+  right:10vw;
+  font-size: 1.5em;
+}
+*/

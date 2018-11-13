@@ -1,0 +1,44 @@
+<!-- HEADER -->
+<header fxLayout="column" fxLayoutAlign="center">
+    <!-- TOOLBAR DESKTOP -->
+    <span fxShow fxHide.lt-sm>
+        <mat-toolbar fxLayout="row wrap" fxLayoutAlign="space-between center" [class.sticky]="toolbarIsSticky">
+            <div><a [routerLink]=" ['./']" title="Homepage of Legal LinQ"><img width="100px" height="82px" mat-card-image alt="Legal LinQ" src="../../assets/img/llq_logo_topleft.png" /></a></div>
+            <!-- FILLER TOT AAN TOOLBAR RECHTS<span class="example-fill-remaining-space"></span> -->
+            <!-- SMALL top TOOLBAR -->
+            <div id="headerbar-right" fxShow fxHide.lt-sm fxLayout="column" fxLayoutAlign="space-between end">
+                <div id="headerbar-right-top" class="text-light text-small back-blue" fxLayout="row" fxLayoutAlign="start center" > 
+                    <a [routerLink]=" ['contact']" title="Contact details" mat-raised-button color="warn">Contact us >></a><span>Legal LinQ - Haarlem : <a href="mailto:info@legallinq.nl?subject=request from the website" style="color: inherit; text-decoration: none;">info@legallinq.nl</a></span>
+                </div>
+                <menu-main id="headerbar-right-bottom"></menu-main>
+            </div>
+        </mat-toolbar>
+    </span>
+    <!-- TOOLBAR MOBILE -->
+    <span fxHide fxShow.lt-sm >
+        <mat-toolbar id="mobile">
+            <div><a [routerLink]=" ['./']" title="Homepage van Legal LinQ"><img width="auto" height="80px" mat-card-image alt="Legal LinQ" src="../../assets/img/llq_logo_topleft.png" /></a></div>
+            <!-- FILLER TOT AAN TOOLBAR RECHTS --><span class="example-fill-remaining-space"></span>
+            <!-- TOOLBAR RECHTS -->
+            <button mat-icon-button title="Menu" (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+        </mat-toolbar>
+    </span>
+</header>
+
+<!-- MAIN CONTENT -->
+<mat-sidenav-container>
+    <mat-sidenav #snav mode="over" position="end" >
+        <menu-mobile></menu-mobile>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="fullscreen" ngClass.lt-sm="fullscreen-mobile" fxLayout="column" fxLayoutAlign="space-between stretch">
+        <main>
+            <router-outlet [ngStyle.lt-sm]="{'padding-top':'55px'}"></router-outlet>
+        </main>
+        <footer fxLayout="column" fxLayoutAlign="space-between center" class="z-index-high back-black text-light">
+            <div>Legal LinQ - legal counsellor - specialist business partnerships</div>
+            <div><menu-footer></menu-footer></div>
+        </footer>  
+    </mat-sidenav-content>
+
+</mat-sidenav-container>

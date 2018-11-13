@@ -1,0 +1,23 @@
+<div fxLayout="column" fxLayoutAlign="space-between stretch" style="margin-top:4em;">
+        <div fxFlexAlign="center" >
+            <h3>Demonstration only</h3>
+            <p>PLEASE NOTE THIS IS FOR DEMONSTRATION PURPOSES ONLY AND <b>NOT</b> LEGAL ADVICE</p>
+            <!--<p>Results: {{Results}}</p>
+            <p>Stored answers: {{StoredAnswers}}</p>-->
+            <!--<p>Last answer Fingerprint: {{LastAnswerFP}}</p>-->
+        </div>
+    </div>
+<div fxLayout="column" fxLayoutAlign="space-between stretch" style="margin-top:4em;">
+    <div fxFlexAlign="center">
+        <h3>Word Document Generator</h3>
+        <p><button mat-raised-button color="warn" (click)="makeDocx('EBMTfinanceTemplate')">Finance information</button></p>
+        <p *ngIf="showDownloadMessage"><b><em>Document is loaded in your downloadfolder</em></b></p>
+    </div>
+</div>
+<div fxLayout="column" fxLayoutAlign="space-between stretch" style="margin-top:4em;">
+    <div fxFlexAlign="center">
+        <h3>Word Document Generator</h3>
+        <p><button mat-raised-button color="warn" (click)="makeDocx('EBMTlegalTemplate')">Legal template</button></p>
+        <p *ngIf="showDownloadMessage"><b><em>Document is loaded in your downloadfolder</em></b></p>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+<div id=drp-main fxLayout="column" fxLayoutAlign="start center">
+    <div id=drp-inner fxLayout="column">
+    <mat-tab-group dynamicHeight="true" (selectedIndexChange)="selectedIndexChange($event)" [selectedIndex]="selectedIndex">
+      <mat-tab label="Claimant">
+        <h2>Claimant profile</h2>
+        <div class = "drp-mainfields">
+          <li *ngFor="let drpitem of drpdata">
+            <button mat-raised-button (click)="openDialog(drpitem)">
+              <mat-icon>{{drpitem.status_icon}}</mat-icon>
+              {{drpitem.name}}
+            </button>
+            <p>{{drpitem.value_description}} {{drpitem.cl_value}}</p>
+          </li>
+        </div>
+        <div>
+          <input matInput placeholder="Example fingerprint (in blockchain)" disabled value={{cl_fingerprint}}>
+        </div>
+        <button mat-raised-button color="secondary" mat-button (click)="gotoAnalysis()">Analyse</button>
+      </mat-tab>
+      
+      
+      <mat-tab label="Defendant">
+        <h2>Defendant Profile</h2>
+        <div class = "drp-mainfields">
+          <li *ngFor="let drpitem of drpdata">
+            <button mat-raised-button (click)="openDialog(drpitem)">
+              <mat-icon> {{drpitem.status_icon}}</mat-icon>
+              {{drpitem.name}}
+            </button>
+            <p>{{drpitem.value_description}} {{drpitem.de_value}}</p>
+          </li>
+        </div>
+        <!--<input [(ngModel)]=de_fingerprint placeholder="insert value"/>-->
+          <div>
+            <input matInput placeholder="Example fingerprint (in blockchain)" disabled value={{de_fingerprint}}>
+          </div>
+        <button mat-raised-button color="secondary" mat-button (click)="gotoAnalysis()">Analyse</button>
+      </mat-tab>
+
+      <!--ANALYSIS START -->
+      <mat-tab label="Analysis">
+      <!--CHARTS UAI -->
+        <h2>DEMO Analysis</h2>
+        <h6>This is NOT legal advise, just a demonstration</h6>
+        <p>Fingerprints: <span style="color:red; font-weight:700">{{cl_fingerprint}}</span> | <span style="color:blue; font-weight:bold">{{de_fingerprint}}</span></p>
+    <!-- AN INJECTABLE TO DYNAMIC LOAD items BASED ON ACTUAL DATA -->
+        <dynamic-content [tabchange]="selectedIndex" ></dynamic-content>
+      </mat-tab>
+      
+      <!--UNCITRAL 2017 TAB -->
+      <mat-tab label="UNCITRAL 2017">
+      <!--CHARTS UAI -->
+        <h2>DEMO UNCITRAL 2017</h2>
+          <p>This prototype demonstrates what a small part of the application may become.</p>
+          <p>Feel free to test it</p>
+          <p>For background and future plans, please <a href="http://www.uncitral.org/pdf/english/congress/Papers_for_Programme/98-DEMETER_and_KNIJPENGA-Putting_technology_at_the_service_of_access_to_justice.pdf" target="_blank"> the paper</a> by Dalma Demeter and Jeroen Knijpenga.</p>
+          
+          <button mat-raised-button (click)="gotoClaimant()">Start as Claimant</button>
+          <button mat-raised-button (click)="gotoDefendant()">Start as Defendant</button>
+          <br/>
+          <button mat-button (click)="resetData()"><mat-icon>delete</mat-icon>Reset Profile Data</button>
+
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

@@ -1,0 +1,117 @@
+<!--FIRST PART MAIN PAGE-->
+<div id="first-main" fxLayout="column">
+  <div class="maingraphic back-blue-light" fxLayout="column" fxLayoutAlign="center center">
+      <h1 class="text-light">Juridisch adviesbureau</h1>
+      <h2 class="text-orange">Specialist in zakelijke partnerships.</h2>
+  </div>
+<div>
+    
+<!-- CSS grid van Flex-layout - GEEN SUPPORT IN IE11, maar IE11 alleen desktop dus nu ok (onderstaand is onderdeel van flex-layout, niet Angular Material "grid list")
+-->
+<div  id="intro" fxLayout="row" fxLayoutAlign="center stretch"
+  gdAreas="block1 block2 block3 block4"
+  gdGap="16px"
+  gdRows="auto"
+  gdAreas.lt-md="block1 block2 | block3 block4"
+  gdRows.lt-md="auto auto"
+  gdAreas.lt-sm="block1 | block2 | block3 | block4"
+  gdRows.lt-md="auto auto auto auto">
+
+    
+  <div class="introblox" gdArea="block1">
+    <h2 class="text-blue-dark">Rechtsvorm</h2>
+    <p>Wilt u samenwerken in een rechtspersoon? Wij bespreken graag de risico's, zeggenschap, kosten, administratieplichten, management overeenkomsten, be&euml;indiging en al die andere juridische aspecten. Zo maakt u de beste keuze.</p>
+    <div class="introaction text-orange"><img height="32px" width="auto" mat-card-image alt="Item Legal LinQ" src="../../assets/img/llq_logo_small_dots.png" /><span><a [routerLink]=" ['kb']" title="Kennisbank partnerschappen">Hulp bij kiezen >></a></span></div>
+  </div>
+  <mat-divider [vertical]="true"></mat-divider>
+  <div class="introblox" gdArea="block2">
+    <h2 class="text-blue-dark">Risico's</h2>
+    <p>Wij onderscheiden de risico's tijdens de samenwerking van de risico's bij en na be&euml;indiging. Misschien blijkt uw zakenpartner wel erg slordig, of werkt de samenwerking niet meer. Is uw investering veilig? Wat is uw risico na be&euml;indiging?</p>
+    <div class="introaction text-orange"><img height="32px" width="auto" mat-card-image alt="Item Legal LinQ" src="../../assets/img/llq_logo_small_dots.png" /><span><a [routerLink]=" ['kb']" title="Kennisbank partnerschappen">Risico analyse >></a></span></div>
+  </div>
+  <mat-divider [vertical]="true"></mat-divider>
+  <div class="introblox" gdArea="block3">
+    <h2 class="text-blue-dark">Bestuursvorm</h2>
+    <p><i>Governance</i> is een vak apart, maar welke vorm van interne besluitvorming u ook kiest, wij leveren de juridische implementatie. Soms staat een besluit juridisch gelijk aan een overeenkomst en daar schenken wij dan de nodige aandacht aan.</p>
+    <div class="introaction text-orange"><img height="32px" width="auto" mat-card-image alt="Item Legal LinQ" src="../../assets/img/llq_logo_small_dots.png" /><span><a [routerLink]=" ['kb']" title="Kennisbank partnerschappen">Lees verder >></a></span></div>
+  </div>
+  <mat-divider [vertical]="true"></mat-divider>
+  <div class="introblox" gdArea="block4">
+    <h2 class="text-blue-dark">Geschillen</h2>
+    <p><i>"Maakt meer kapot dan u lief is"</i>, geldt vaak ook voor een gang naar de rechter. Juist wanneer de relatie cruciaal is voor zakelijk succes, biedt alternatieve geschillenbeslechting de oplossing. Wij kennen goed de weg in het woud van de mogelijkheden en adviseren u graag.</p>
+    <div class="introaction text-orange"><img height="32px" width="auto" mat-card-image alt="Item Legal LinQ" src="../../assets/img/llq_logo_small_dots.png" /><span><a [routerLink]=" ['kb']" title="Kennisbank partnerschappen">Meer opties >></a></span></div>
+  </div>
+  
+</div>
+
+<!-- MOTTO -->
+<div id="motto">
+  <div id="inner" fxLayout="row" class="back-blue text-light">
+    <div class="item" fxLayout="column" fxLayoutAlign="center" style="width:50vw;" fxShow fxHide.lt-sm><img alt="Item Legal LinQ" src="../../assets/img/llq_pyramid.png" /></div>
+    <div class="item"fxLayout="column" fxLayoutAlign="center center">
+      <div>
+        <h2>Veilig evenwicht</h2>
+        <p>Succesvol samenwerken is een balanceer act. Een val is zo gemaakt dus bereiden wij alvast een veilige landing voor.</p>
+        <p>Het grootste vangnet biedt de meeste zekerheid, maar succesvol samenwerken vraagt ook om vertrouwen. Wat is het juiste evenwicht?</p>
+        <p>Daarom gaat u naar een specialist, voor een rechtsvorm, risico afdekking, en geschilbeslechting die bij u past.</p>
+        <p>Wij bieden de opties en adviseren over consequenties, u bepaalt het veilige evenwicht.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--JEROEN BAR -->
+<mat-toolbar fxLayout="row wrap" fxLayoutAlign="space-around center" class="back-blue-light text-light">
+  <h2><span fxShow fxHide.lt-sm>Legal LinQ is: </span>Mr. Jeroen Knijpenga</h2>
+</mat-toolbar>
+
+<!--CLIENTS-->
+<div id="clients-wrapper" fxLayout="column" fxLayoutAlign="space-between center" fxFlexAlign="center">
+  <div fxLayout="column" fxLayoutAlign="space-around center">
+    <div><img width="99" height="99" alt="Jeroen Knijpenga" src="../../assets/img/JK_llq_frontpage.jpg" /></div>
+    <p>Opgeleid in Nederland (LL.M) en Engeland (MCIArb), vertrouwend op 20 jaar ervaring.</p>
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="2vw">
+      <span>Jeroen Knijpenga <i>social</i>: </span>
+      <a href="https://twitter.com/jeroenknijpenga/" target="_blank" rel="noopener"><img width="40" height="auto" alt="Twitter Jeroen Knijpenga" src="../../assets/img/Twitter_Social_Icon_Circle_Color.png" /></a>
+      <a href="https://nl.linkedin.com/in/jknijpenga/" target="_blank" rel="noopener"><img width="93" height="auto" alt="LinkedIn Jeroen Knijpenga" src="../../assets/img/LinkedIn_Logo-2C-21px-R.png" /></a>
+    </div>
+    
+    <p>Bedrijven die al op mijn advies vertrouwden :</p>
+  </div>
+  <div id="clients" [ngStyle.lt-sm]="{'height':'100%'}">
+    <!-- LARGE SCREEN -->
+    <div  class="scroll-left" fxLayout="row" fxShow fxHide.lt-sm>
+      <img width="300" height="auto" alt="Nederlands Wetenschappenlijk Onderzoeksinstituut (NWO)" src="../../assets/img/NWO.png" />
+      <img width="300" height="auto" alt="Hewlett Packard Nederland" src="../../assets/img/hp.png" />
+      <img width="300" height="auto" alt="Abn Amro Bank" src="../../assets/img/ABN_AMRO.png" />
+      <img width="300" height="auto" alt="TNO" src="../../assets/img/TNO.png" />
+      <img width="300" height="auto" alt="TomTom" src="../../assets/img/tomtom.png" />
+      <img width="300" height="auto" alt="British Telecom" src="../../assets/img/BT.png" />
+    </div>
+    <!-- SMALLER SCREEN -->
+  <!--
+    <div  fxLayout="row wrap" fxLayoutAlign="space-around center" fxHide fxShow.lt-md fxHide.lt-sm>
+      <img width="200" height="200" alt="Hewlett Packard Nederland" src="../../assets/img/hp.png" />
+      <img width="200" height="111" alt="Nederlands Wetenschappenlijk Onderzoeksinstituut (NWO)" src="../../assets/img/NWO.png" />
+      <img width="200" height="109" alt="British Telecom" src="../../assets/img/BT.png" />
+      <img width="200" height="125" alt="Abn Amro Bank" src="../../assets/img/ABN_AMRO.png" />
+      <img width="200" height="150" alt="TNO" src="../../assets/img/TNO.png" />
+      <img width="200" height="143" alt="TomTom" src="../../assets/img/tomtom.png" />
+    </div>      
+  -->
+    <!-- VERY SMALL SCREEN -->
+    <div  fxLayout="row wrap" fxLayoutAlign="space-around center" fxHide fxShow.lt-sm>
+      <img width="100" height="auto" alt="Hewlett Packard Nederland" src="../../assets/img/hp.png" />
+      <img width="100" height="auto" alt="Nederlands Wetenschappenlijk Onderzoeksinstituut (NWO)" src="../../assets/img/NWO.png" />
+      <img width="100" height="auto" alt="British Telecom" src="../../assets/img/BT.png" />
+      <img width="100" height="auto" alt="Abn Amro Bank" src="../../assets/img/ABN_AMRO.png" />
+      <img width="100" height="auto" alt="TNO" src="../../assets/img/TNO.png" />
+      <img width="100" height="auto" alt="TomTom" src="../../assets/img/tomtom.png" />
+    </div>
+  </div>
+</div>
+
+<!--LAST BAR - ACTIONS -->
+<mat-toolbar fxLayout="row wrap" fxLayoutAlign="space-around center" class="back-blue-light text-light last-call-to-action-bar">
+  <a [routerLink]=" ['contact']" title="Contact gegevens" mat-raised-button color="warn">Neem contact op >></a>
+</mat-toolbar>

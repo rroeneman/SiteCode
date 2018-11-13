@@ -1,0 +1,62 @@
+<h2 mat-dialog-title class="primary-color">{{data.drp.name}}</h2>
+<mat-dialog-content class="accent-color">
+  <p>{{data.drp.description}}</p>
+
+ <div [ngSwitch]="Qtable">
+    <ng-template [ngSwitchCase]="'claimant-proc_pref'" ngSwitchDefault> 
+      <mat-form-field>
+        <mat-select [(ngModel)]="data.drp.cl_value" name="cl_Pref">
+          <mat-option value=20>Negotiation</mat-option>
+          <mat-option value=40>Mediation</mat-option>
+          <mat-option value=60>Arbitration</mat-option>
+          <mat-option value=80>Litigation</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </ng-template>      
+    
+    <ng-template [ngSwitchCase]="'claimant-UAI'"> 
+      <mat-form-field>
+          <mat-select [(ngModel)]="data.drp.cl_value" name="cl_UAI">
+            <mat-option value=20>Trust is key</mat-option>
+            <mat-option value=40>A bit of risk is OK</mat-option>
+            <mat-option value=60>I take calculated risks</mat-option>
+            <mat-option value=80>Why should I take risks?</mat-option>
+          </mat-select>
+        </mat-form-field>
+    </ng-template>
+
+    <ng-template [ngSwitchCase]="'defendant-proc_pref'"> 
+      <mat-form-field>
+          <mat-select [(ngModel)]="data.drp.de_value" name="de_Pref">
+            <mat-option value=20>Negotiation</mat-option>
+            <mat-option value=40>Mediation</mat-option>
+            <mat-option value=60>Arbitration</mat-option>
+            <mat-option value=80>Litigation</mat-option>
+          </mat-select>
+        </mat-form-field>
+    </ng-template>
+
+    <ng-template [ngSwitchCase]="'defendant-UAI'"> 
+      <mat-form-field>
+        <mat-select [(ngModel)]="data.drp.de_value" name="de_UAI">
+          <mat-option value=20>Trust is key</mat-option>
+          <mat-option value=40>A bit of risk is OK</mat-option>
+          <mat-option value=60>I take calculated risks</mat-option>
+          <mat-option value=80>Why should I take risks?</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </ng-template>
+    
+    <p><small>{{data.drp.value_input_instruct}}</small></p>
+  
+  </div>  
+</mat-dialog-content>
+
+<mat-dialog-actions>
+      <button mat-raised-button color="primary" mat-dialog-close="save">OK</button>  
+      <button mat-raised-button color="secondary" mat-dialog-close="exclude">Exclude</button>  
+</mat-dialog-actions>
+
+
+
+

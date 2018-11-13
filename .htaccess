@@ -1,0 +1,47 @@
+#
+# HTTP TO HTTS REDIRECT, REST OF FILE IS PROBABLY DISREGARDED
+#
+
+RewriteCond %{HTTPS} off
+# First rewrite to HTTPS:
+# Don't put www. here. If it is already there it will be included, if not
+# the subsequent rule will catch it.
+RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# Now, rewrite any request to the wrong domain to use www.
+# [NC] is a case-insensitive match
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule .* https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+#TER VOORKOMING VAN 404, AANVRAGEN WORDEN ALTIJD DOORGEZET NAAR JAVASCRIPT
+# If an existing asset or directory is requested go to it as it is
+  RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
+  RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
+  RewriteRule ^ - [L]
+
+  # If the requested resource doesn't exist, use index.html
+  RewriteRule ^ /index.html
+
+  # Turn on Expires and set default to 0
+ExpiresActive On
+ExpiresDefault A0 
+# Set up caching on media files for 1 year (forever?)
+<filesMatch "\.(flv|ico|pdf|avi|mov|ppt|doc|mp3|wmv|wav)$">
+  ExpiresDefault A29030400
+  Header append Cache-Control "public"
+</filesMatch> 
+# Set up caching on media files for 4 weeks
+<filesMatch "\.(gif|jpg|jpeg|png|swf|js|css)$">
+  ExpiresDefault A3000000
+  Header append Cache-Control "public"
+</filesMatch>
+# Set up 2 Hour caching on commonly updated files
+<filesMatch "\.(xml|txt|json|html|)$">
+  ExpiresDefault A7200
+  Header append Cache-Control "proxy-revalidate"
+</filesMatch> 
+# Force no caching for dynamic files
+<filesMatch "\.(php|cgi|pl|htm)$">
+  ExpiresActive Off
+  Header set Cache-Control "private, no-cache, no-store, proxy-revalidate, no-transform"
+  Header set Pragma "no-cache"
+</filesMatch>

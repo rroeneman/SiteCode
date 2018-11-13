@@ -1,0 +1,105 @@
+NPM-CHECK, gebruiken om versies en ongebruikte dependencies op te sporen (global, dus zou op laptop altijd moeten werken)
+commando npm-check
+commando for updates check: npm-check --update
+commando for updates, kan ook: npm outdated 
+
+Aantekeningen voor makkelijk opstarten:
+- Zie package.json voor commando's, die start je op de promt met 'npm run COMMANDO' 
+- Webpagina op http://localhost:8080/
+- 'npm start' is test commando, Build maakt allemaal nieuwe files
+- Na de build commit to Git en dan uploaden.
+- files for internet staan allemaal in 'docs'
+
+
+Probleem met react, ga naar aangegeven file en zoek:
+class Component<P, S> implements ComponentLifecycle<P, S> {
+    wijzing in
+class Component<P, S>{
+
+SASS, locaal node-sass and for webpack sass-loader. Check:https://medium.com/a-beginners-guide-for-webpack-2/using-sass-9f52e447c5ae
+npm install sass-loader node-sass --save-dev
+
+Scroll detectie: @Hotlistener in app.component.ts, indien scroll events in andere components nodig zijn, gebruik eventemitter en een ontvanger om het naar andere component te sturen
+
+
+
+/******************************************************************************************************
+*******************************************************************************************************
+*       OLD node_modules
+*
+*******************************************************************************************************/
+
+
+
+ANGULAR-PARTICLE: index.js voeg toe bij switch shape:
+            "
+            case 'Geschil':
+                this._canvasParams.ctx.fillText("Geschil",this.x, this.y);
+            break; 
+            case 'Onderhandeling':
+                this._canvasParams.ctx.fillText("Onderhandeling",this.x, this.y);
+            break; 
+            case 'Overeenkomst':
+                this._canvasParams.ctx.fillText("Overeenkomst",this.x, this.y);
+            break; 
+            case 'Mediation':
+                this._canvasParams.ctx.fillText("Mediation",this.x, this.y);
+            break; 
+            case 'Arbitrage':
+                this._canvasParams.ctx.fillText("Arbitrage",this.x, this.y);
+                break; 
+            case 'Geautomatiseerd_advies':
+                this._canvasParams.ctx.fillText("Geautomatiseerd advies",this.x, this.y);
+            break; 
+            "
+    en voor de font grote, voeg toe (alleen de lijn met de +)
+            this._canvasParams.ctx.lineWidth = this._params.particles.shape.stroke.width;
+            + this._canvasParams.ctx.font = radius * this._params.particles.shape.stroke.fontsize.toString() + 'px ' + this._params.particles.shape.stroke.font;
+            this._canvasParams.ctx.stroke();
+
+    en in de component: 
+        "shape": {
+            "type": ["triangle","Geschil","Onderhandeling","Bemiddeling","Mediation","Arbitrage","Rechtbank"],
+            "stroke": {
+              "width": 0.5,
+              "color": "#FFFFFF",
+              "font": "Georgia",
+              "fontsize" : window.innerWidth / 180
+            },
+
+
+/****
+ANGULAR2-SCHEMA, (angular2-json-schema-form) REMOVE lines (2 different actions): (simple search replace in that folder of node_modules)
+[fxLayoutWrap]=\"options?.fxLayoutWrap\"\n      
+[floatPlaceholder]=\"options?.floatPlaceholder || (options?.notitle ? 'never' : 'auto')\"\n   (github says replace "floatPlaceholder" with "floatLabel", untested)
+
+CHECK FOR: ERROR in ./node_modules/angular2-json-schema-form/angular2-json-schema-form.es5.js 7:12
+Module parse failed: Identifier 'Ajv' has already been declared (7:12)
+
+FORMS - ITERATE OVER SCHEMA EN PICK UP ON ONCLICK OR ONCHANGE ELEMENTS
+    iterateArray(ArrayDataLocation:any = ""){
+        if (ArrayDataLocation == ""){ var data = this.form;}
+        else{ var data = this.form+ArrayDataLocation; }
+        for (let i = 0; data.length > i; i ++) {
+            if(typeof data[i] === "object") { this.iterateObject(ArrayDataLocation+"["+i+"]"); }
+            else if(data[i].isArray){ this.iterateArray(ArrayDataLocation+"["+i+"]"); } //assume array
+            else if(typeof data[i] !== "string"){console.error("UNEXPECTED DATA-TYPE FOR (ARRAY): ", data[i]);}
+        }
+    }
+    iterateObject(ObjectDataLocation:any){
+        var data = eval("this.form"+ObjectDataLocation);
+        //THE MAGIC : filter out objects containing an onClick element and initialise html form element with that
+        if(data.hasOwnProperty("onClick") && data["type"] == "submit"){ this.submitFunction = new Function("answers", data["onClick"]);  }
+        //filter out objects containing an onChange element
+        else if(data.hasOwnProperty("onChange")){  };
+
+        //check for other array's or objects
+        var ObjList = Object.keys(data);
+        for (let i = 0; ObjList.length > i; i ++) {
+            let key = ObjList[i];
+            if(typeof data[key] === "object") { this.iterateObject(ObjectDataLocation+"[\""+key+"\"]"); }
+            else if(data[key].isArray){ this.iterateArray(ObjectDataLocation+"[\""+key+"\"]"); } //assume array
+            //catch function, if no string (delt with above) or boolean (not relevant)
+            else if(typeof data[key] !== "string" && typeof data[key] != "boolean")  {console.error("WRONG DATA TYPE FOR (OBJECT): ", key, data[key]);}
+        }
+    }

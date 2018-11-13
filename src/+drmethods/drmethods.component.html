@@ -1,0 +1,41 @@
+<div fxLayout="column" fxLayoutAlign="space-between stretch">
+    <div fxFlexAlign="center" >
+        <h3 style="margin-top:32px; margin-bottom:8px;">Fingerprints</h3>
+        <form novalidate [formGroup]="FPotherForm" (ngSubmit)="FPotherFormOnSubmit()">
+            <mat-form-field>
+                <input matInput [formControl]="FPdoNothing">
+                <mat-hint>Your current fingerprint.</mat-hint>
+                <mat-error *ngIf="FPother.errors && (FPother.dirty || FPother.touched)"></mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label></mat-label>
+                <input matInput placeholder="Provide fingerprint" [formControl]="FPother" FPotherValidator >
+                <mat-hint>Other party fingerprint (ie: 762)</mat-hint>
+            </mat-form-field>
+            <button mat-button color="primary" [disabled]="FPotherForm.invalid" type="submit">Confirm</button>
+        </form>
+    </div>
+</div>    
+<div fxLayout="column" fxLayoutAlign="space-between stretch" style="margin-top:4em;">
+        <div fxFlexAlign="center" >
+            <h3>Demonstration only</h3>
+            <p>Below a demonstration of how the outcome could visually look. This is <b>NO legal advice</b> and likely to be incorrect.</p>    
+        </div>
+    </div>
+<div fxLayout="column" fxLayoutAlign="space-between stretch" style="margin-top:4em;">
+    <div fxFlexAlign="center">
+        <h3>Level of differences</h3>
+        <span fxShow fxHide.lt-sm>
+            <div [chartType]="gauge_type" [chartOptions]= "gauge_ChartOptions" [chartData]="gauge_ChartData" GoogleChart></div>    
+        </span>
+        <span fxShow.lt-sm fxHide><em>Sorry, indicative level meters can only show on a wider screen.</em></span>
+    </div>
+</div>
+<div fxLayout="column" fxLayoutAlign="space-between stretch" style="margin-top:4em; margin-bottom: 2em;" >
+    <div fxFlexAlign="center">
+        <h3>Recommendation</h3>
+        <p style="max-width: 300px;">Based on this recommendation, a match with existing dispute resolution offerings can be made.<p>
+        <mat-slider color="primary" min="1" max="100" step="1" disabled value="{{ResultNumber}}"></mat-slider>
+        <p style="font-size:small; margin-top: -2.3em">Negotiation - Mediation - Arbitration - Litigation</p>
+    </div>
+</div>

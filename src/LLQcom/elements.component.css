@@ -1,0 +1,116 @@
+/**
+* FLIP CARDS
+*/
+.flip-box-inner {
+    perspective: 860px; /*voor animatie*/
+    overflow-x: hidden;
+    margin: 4vh 0 4vh 0;  
+  }
+  .flip-card {
+    position: relative;
+    padding: 0;
+    margin: 1vw;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+    z-index: 1;
+    position: relative;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  .flip-card .flip-card-front,
+  .flip-card .flip-card-back {
+    height:280px;
+    width:175px;
+  
+    border-radius: 25px;
+    -webkit-perspective: 600px;
+    -ms-perspective: 600px;
+    perspective: 600px;
+    padding: 27px 20px 27px 20px;
+    text-align: center;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    background-clip: padding-box;
+    transition: all 0.4s cubic-bezier(0.2, 0.85, 0.4, 1.275) !important;
+  }
+  .flip-card .flip-card-front {
+    -webkit-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+  }
+  .flip-card .flip-card-back {
+    position: absolute;
+    left: 0;
+    top: 0;
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+    z-index: -1;
+  }
+  .flip-card:hover .flip-card-back {
+    -webkit-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+    z-index: 1;
+  }
+  .flip-card:hover .flip-card-front {
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+    z-index: -1;
+  }
+  
+  .flip-card .finished-animating {
+    transition: none !important;
+    -webkit-animation: none !important;
+    animation: none !important;
+  }
+  /*SHOW OR NOT SHOW - flipcards*/
+  @media screen and (max-width: 1450px) {#flip1{ display: none;} }
+  @media screen and (max-width: 1200px) {#flip2{ display: none;} }
+  @media screen and (max-width: 1000px) {#flip3{ display: none;} }
+  @media screen and (max-width: 700px) {#flip4{ display: none;} }
+   
+  
+  /* CSS VOOR OP DE CARD, MISSCHIEN NOG GEBRUIKEN
+  .flip-card:hover .flip-card-front .flip-box-grafix i:before {
+    display: none;
+  }
+  .flip-card .flip-box-grafix {
+    display: table;
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+  .flip-card .flip-box-image {
+    table-layout: fixed;
+    width: 100%;
+  }
+  .flip-card .flip-box-circle {
+    height: 64px;
+    width: 64px;
+    border: 1px solid;
+    border-radius: 50%;
+    /* Fix to make border-radius work for transparent colors *//*
+    background-clip: padding-box;
+  }
+  .flip-card .flip-box-circle i {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 24px;
+  }
+  .flip-card .flip-box-no-circle i {
+    font-size: 60px;
+  }
+  .flip-card .flip-box-heading {
+    margin-top: 0;
+    margin-bottom: 9px;
+  }
+  .flip-card .flip-box-heading.without-text {
+    margin-bottom: 0;
+  }
+  .flip-card .flip-box-heading-back {
+    margin-bottom: 9px;
+    margin-top: 0;
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+  */
+  
