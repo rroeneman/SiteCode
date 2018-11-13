@@ -1,9 +1,0 @@
-.vscode/
-assets/
-dist/
-electron-packager-builder/
-node_modules/
-QsJSON/
-win_packager/
-google9f*
-.gitignore
