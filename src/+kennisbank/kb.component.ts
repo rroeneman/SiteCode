@@ -9,26 +9,7 @@ import {Router, ActivatedRoute} from '@angular/router';
   selector: 'kb-overview',
   templateUrl: 'kb.component.html',
 })
-export class KbOverviewComponent implements OnInit, OnDestroy {
-  constructor(
-    private currentroute: ActivatedRoute,
-    private router: Router,
-    private _kbService: KennisbankService,
-    ) {}
-  
-
-  ngOnInit() {
-    //console.log('De router', this.currentroute.snapshot.params['id']) 
-    //let JsonData = this._kbService.retrieveItem(this.currentroute.snapshot.params['id']);
-    //console.log('DATA JSON is: ', JsonData);
-    //if(JsonData == undefined && this.currentroute.snapshot.params['id'] != undefined) this.router.navigate(['/404'])
-  }
-
-  ngOnDestroy() {
-    //this._kbService.removeItem(this.currentroute.snapshot.params['id']);
-  }
-}
-
+export class KbOverviewComponent {}
 
 /**
  * Kennisbank pagina's gebaseerd op JSON input
@@ -36,10 +17,7 @@ export class KbOverviewComponent implements OnInit, OnDestroy {
 @Component({
   selector: 'kb-pages',
   template: `
-  HALLO
-  {{title}}
-  {{subtitle}}
-  {{content}}
+  <div [innerHTML]="HTMLcontent.content"></div>
   `,
 })
 export class KbPagesComponent implements OnInit, OnDestroy {
@@ -50,13 +28,17 @@ export class KbPagesComponent implements OnInit, OnDestroy {
     ) {}
     public title: any;
     public subtitle: any;
-    public content: any;
+    public HTMLcontent: any;
 
   ngOnInit() {
-    let JsonData = this._kbService.retrieveItem(this.currentroute.snapshot.params['id']);
-    console.log('DATA JSON is: ', JsonData);
+    this.HTMLcontent = this._kbService.retrieveItem(this.currentroute.snapshot.params['id']);
+    console.log('DATA JSON is: ', this.HTMLcontent);
     //Geen data, dan waarschijnlijk foute url en dus naar de 404
-    if(JsonData == undefined) this.router.navigate(['/404'])
+    if(this.HTMLcontent == undefined) this.router.navigate(['/404'])
+    
+    //this.HTMLcontent = JSON.parse(String(JsonData));
+
+
   }
 
   ngOnDestroy() {
