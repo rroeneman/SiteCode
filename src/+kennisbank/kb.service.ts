@@ -16,7 +16,6 @@ export class KennisbankService {
 	 * Id (laatste deel van de url) = JsonFileName
 	 */
 	LoadJsonById(JsonFileName:any){
-		//if(JsonFileName == undefined) JsonFileName = 'overview';
 		var globalFunc = this;
 		return new Promise(function(resolve, reject) { 
 				//if url is not yet loaded, erase all current questions and then continue to loading requested question/answer data
