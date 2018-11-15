@@ -8,8 +8,8 @@ var path = require('path');
     }
 
 const ENV = process.env.NODE_ENV = process.env.ENV = 'development';
-//const ExportEntryDir = 'LLQnl'; 
-const ExportEntryDir = 'LLQcom';
+const ExportEntryDir = 'LLQnl'; 
+//const ExportEntryDir = 'LLQcom';
 //const ExportEntryDir = 'LLQelectron';
 
 module.exports = {
