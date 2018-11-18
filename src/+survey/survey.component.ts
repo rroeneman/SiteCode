@@ -239,10 +239,8 @@ export class SurveyComponent implements OnInit  {
         //let description = "een tekst";
         //initiate dialogbox and send data
         let dialogRef = this.dialog.open(DialogComponent, {
-        width: '324px',
-        data: {
-        //    text: description,
-        }
+            width: '324px',
+            //data: { text: description,  }
         } );
         //result back
         dialogRef.afterClosed().subscribe(result => {

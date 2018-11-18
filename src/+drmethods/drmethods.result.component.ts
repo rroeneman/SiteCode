@@ -1,10 +1,10 @@
 import { Component, Input, OnInit, Pipe } from '@angular/core';
 import { MatButton, MatFormField, MatFormFieldControl, MatHint, MatInput, MatSlider } from '@angular/material';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { SurveyService } from '../+survey/surveyservice';
+import { SharedFormService } from '../+sharedForm/sharedForm.service';
 
 @Component({
-    templateUrl:'drmethods.component.html',
+    templateUrl:'drmethods.result.component.html',
     styles:[`
       .mat-slider-horizontal{
         min-width: 300px;
@@ -31,7 +31,7 @@ export class ResultDrmethodsComponent implements OnInit {
     public FPdoNothing : FormControl;
 
     constructor(
-        private _surveyService: SurveyService,
+        private _service: SharedFormService,
     ){ }
     
     ngOnInit() {
@@ -58,7 +58,7 @@ export class ResultDrmethodsComponent implements OnInit {
     }
     FPotherFormOnSubmit(){
         //get the answer from local storage
-        let answer:String = String(this._surveyService.GetResultById(String(this.FPotherForm.value['FPother'])));
+        let answer:String = String(this._service.GetResultById(String(this.FPotherForm.value['FPother'])));
         //in case answer is found, update graphs
         if(answer != null) {
             answer = answer.split(",")[0].replace("[","").replace("]","");
@@ -143,13 +143,13 @@ import { Validator, NG_VALIDATORS } from '@angular/forms';
     ]
 })
 export class FPotherValidator implements Validator {
-    constructor( private _surveyService: SurveyService ){ }
+    constructor( private _service: SharedFormService ){ }
 
     //validate(c: AbstractControl): { [key: string]: any } {
     validate(c: FormControl) {
         if (c.value.length >= 3){
             // see if value exist in store, otherwise return false
-            if(this._surveyService.GetResultById(String(c.value)) == null){
+            if(this._service.GetResultById(String(c.value)) == null){
                 return { FPotherValidator: false  } //NOT validated
             }
             else{ return null } //validated!

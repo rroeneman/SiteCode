@@ -1,0 +1,17 @@
+.mat-slider-horizontal{
+    min-width: 300px;
+  }
+title{
+  display: block;
+}
+p{ 
+    white-space: pre-rap;
+    font-size: small;
+    width:90%;
+    max-width:660px;
+}
+sharedForm-component, #settingButton{ 
+    width:90%;
+    max-width:660px;
+    padding-top:5vh;
+}

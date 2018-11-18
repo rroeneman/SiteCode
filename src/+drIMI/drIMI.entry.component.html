@@ -1,0 +1,37 @@
+<div fxLayout="column" fxLayoutAlign="start center">
+    <title>IMI Ole list - in interactive form</title>
+    <p>The IMI published a questionnaire that can be easily filled with this interactive tool.</p>
+    <div *ngIf="showResult"><button mat-raised-button color="secondary" (click)="backToQuestions()"><< Back to questions</button></div>
+    <span *ngIf="!showResult">
+        <button [disabled]="!backButtonActive" fxShow fxHide.lt-sm at-mini-fab color="secondary" mat-button (click)="backOneQuestion()"><< Back</button>
+        <a fxHide fxShow.lt-sm (click)="backOneQuestion()">&nbsp;<<&nbsp;</a>
+    </span>
+            
+    <mat-slider color="secondary" min="1" max="100" step="1" disabled value="{{progressIndicator}}"></mat-slider>
+
+    <div id="settingButton" *ngIf="!showResult" fxLayout="row" fxLayoutAlign="end end">
+        <sharedFormSettingsButton 
+            (formdataNew)="handleFormdataNew($event)">
+        </sharedFormSettingsButton>
+    </div>
+
+    <sharedForm-component
+        *ngIf="!showResult;else noFormData"
+
+        (changeFingerprintKey) ="FingerprintKeyChange($event)"
+        (previousQuestion) = "setPreviousQuestionFingerprint($event)"
+        (progressIndicator) =  "setProgressIndicator($event)"
+        (showResult) ="showResultsActivedBySharedForm($event)"
+
+        [formdataToDisplay]="formdataToSharedForm">
+    </sharedForm-component>
+    <ng-template #noFormData>
+        <!-- <p>There are no questions, please go to controls or result section...</p> -->
+    </ng-template>
+
+    <dynamic-content 
+        *ngIf="showResult"
+        [setActive]="showResult" 
+        [currentFingerprintKey]="currentFingerprintKey">
+    </dynamic-content>
+</div>

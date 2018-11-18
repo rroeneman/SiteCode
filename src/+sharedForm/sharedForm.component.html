@@ -1,0 +1,20 @@
+<div fxLayout="column" fxLayoutAlign="space-around stretch">
+    <div fxFlexAlign="center" style="width:100%">
+        <!--De spinner-->        
+        <div *ngIf="showspinner"><mat-progress-spinner class="spinner" color="primary" mode="indeterminate" strokeWidth=5 value=80> </mat-progress-spinner></div>
+        <!--Het formulier-->
+        <div id="jsonformdiv" *ngIf="!showspinner">
+            <json-schema-form 
+                [schema]="schema"
+                [data]="data"
+                [layout] = "form"
+                framework="material-design"
+                (onSubmit)="submitFunction($event)"
+                (onChanges)="onChangesFunction($event)"
+                (isValid)="isValid"
+                (validationErrors)="validationErrors($event)">
+            </json-schema-form>
+            <div *ngIf="NoDataSelectedWarning" >  <font color="red">[Please select or enter some data] </font></div>
+        </div>
+    </div>
+</div>

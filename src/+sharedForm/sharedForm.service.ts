@@ -1,14 +1,13 @@
 import {Injectable} from '@angular/core';
+
 import { LocalStorageService } from 'angular-2-local-storage';
 import { HttpClient } from '@angular/common/http';
 import { formatFormData } from 'angular7-json-schema-form';
 import 'rxjs/add/operator/toPromise';
-let path = require('path');
-//LET UP, READFILE CRASHED HEEL ANGUALR
-//let readFilePromise = require('fs-readfile-promise');
- 
+var path = require('path');
+
 @Injectable()
-export class SurveyService {
+export class SharedFormService {
 	constructor (
 		private localStorageService: LocalStorageService,
 		private http: HttpClient,
@@ -88,7 +87,7 @@ export class SurveyService {
 		//make iteratable list		
 		var ObjList = Object.keys(answers);
 		//catch situations were no data is sent
-		if(ObjList.length == 0) { console.error("No answers to store while answers were expected (StoreAnswers at SurveyServices)");}
+		if(ObjList.length == 0) { console.error("No answers to store while answers were expected (StoreAnswers at SharedFormServices), data received was", answers);}
 		//iterate and store
 		for (let i = 0; ObjList.length > i; i ++) {
 			this.storeData("Answers"+ObjList[i],answers[ObjList[i]]); //store data
@@ -187,6 +186,8 @@ export class SurveyService {
 		return true; //send true back to activate re-loading of page
 	}
 
+	//DEZE REQUIRE CRASHED HELE MODULE, IETS OP VINDEN, IS ALLEEN VOOR LOADTEMPLATES
+	//var readFilePromise = require('fs-readfile-promise');
 	/** 
 	 * 
 	 * LOAD WORD DOCUMENTS / TEMPLATES
@@ -197,7 +198,11 @@ export class SurveyService {
 		if(navigator.userAgent.includes("Electron")){
 			var p = path.join('assets','ds', templateName);
 			//HOE TE KOMEN TOT EEN ARRAYBUFFER
-			//return readFilePromise(p,'utf8').buffer; //LET OP READFILE CRASHED HEEL ANGULAR
+
+
+//READ FILE PROMISE PROBLEEM TODO
+
+			//			return readFilePromise(p,'utf8').buffer;
 			return null;
 		}
 		else{
@@ -207,5 +212,5 @@ export class SurveyService {
 			}).toPromise() 
 		}
 	}
-
 }
+

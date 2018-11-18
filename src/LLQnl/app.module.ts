@@ -8,7 +8,7 @@ export class AppCustomPreloader implements PreloadingStrategy {  preload(route: 
  * HIER START APP MODULE
  */
 import { NgModule, enableProdMode }      from '@angular/core';
-enableProdMode();
+//enableProdMode();
 
 import { BrowserModule } from '@angular/platform-browser';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -34,15 +34,15 @@ let appRoutes: Routes = [
   //{ path: 'privacy', component: PrivacyComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'juridisch-advies', component: JuridischAdviesComponent },
-  //{ path: 'kb/:id', loadChildren: '../+kennisbank#KennisbankModule'  },
-  { path: 'kb', loadChildren: '../+kennisbank#KennisbankModule',data: { preload: true }  },
-  { path: 'dashboard', loadChildren: '../+dashboard#DashboardModule' },
-  { path: 'drp', loadChildren: '../+drp#DRPModule' }, 
-  { path: 'decision-support/:id', loadChildren: '../+survey#SurveyModule' },
-  { path: 'decision-support', loadChildren: '../+survey#SurveyModule' },
-  { path: 'conceptualize', loadChildren: '../+conceptualize#ConceptualizeModule'},
+  { path: 'kb', loadChildren: '../+kennisbank#KennisbankModule', data: { preload: true }  },
+  //{ path: 'dashboard', loadChildren: '../+dashboard#DashboardModule' },
+  //{ path: 'drp', loadChildren: '../+drp#DRPModule' }, 
+  //{ path: 'decision-support', loadChildren: '../+survey#SurveyModule' },
+  //{ path: 'conceptualize', loadChildren: '../+conceptualize#ConceptualizeModule'},
   { path: '404', component: PageNotFoundComponent },
-  { path: '**', redirectTo: '/404' }
+  { path: 'drmethods', loadChildren: '../+drmethods#DRMethodsModule', data: { preload: false }  },
+  { path: 'drimi', loadChildren: '../+drIMI#DRIMIModule', data: { preload: false }  },
+  { path: '**', redirectTo: '/404' },
 ];
 
 @NgModule({

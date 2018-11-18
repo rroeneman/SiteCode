@@ -32,11 +32,11 @@ import { SurveyService } from './surveyservice';
  * drMETHODS app, uses SCRIPT + SCRIPTLOADERRESOLVER
  */
 import { DRMethodsModule } from '../+drmethods';
-import { ResultDrmethodsComponent } from '../+drmethods/drmethods.component';
+import { ResultDrmethodsComponent } from '../+drmethods/drmethods.result.component'; 
 ComponentForResult.push(ResultDrmethodsComponent);
 
 import { BasicResultComponent } from './survey.component';
-ComponentForResult.push(BasicResultComponent);
+ComponentForResult.push(BasicResultComponent); 
 
 
 import {DRIMIModule } from '../+drIMI';
@@ -52,7 +52,7 @@ ComponentForResult.push(ResultDsOfflineComponent);
 let routesTest: Routes = [
   {path: '', redirectTo: '/404', pathMatch: 'full'} ,
   
-  //DRMETHODS
+  //DRMETHODS 
   { path: 'drmethods', component: SurveyComponent,
     data: {
       url:'https://www.legallinq.com/Qs/drMethodSelection/',
