@@ -3,7 +3,7 @@ import {HttpInterceptor, HttpErrorResponse, HttpResponse, HttpRequest, HttpHandl
 import { Observable } from 'rxjs/Observable';
 //import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/throw';
+import { throwError } from 'rxjs';
 
 @Injectable()
 export class MyInterceptor implements HttpInterceptor {
@@ -32,7 +32,7 @@ export class MyInterceptor implements HttpInterceptor {
                         console.error(`Interceptor: Backend returned code ${response.status}, body was: ${response.error}`);
                     }
                 }
-                return Observable.throw(response);
+                return throwError(response);
             });
     }
 }
