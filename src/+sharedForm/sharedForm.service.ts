@@ -31,10 +31,19 @@ export class SharedFormService {
 		if(typeof formdata == "object"){ 
 			//Generate List of answers, needed as keys to fetch the data
 			var ListOfAnswers = Object.keys(formdata);
-			//console.log("ListOfAnswers: ", ListOfAnswers);
-			//STANDARD, use last answer of list
-			let recordId = formdata[ ListOfAnswers[ListOfAnswers.length-1] ];
-			//set the new results
+			//sequence voor arrays
+			console.log("HEBBES", formdata[ListOfAnswers[0]][0])
+			let recordId;
+			if(ListOfAnswers.length == 1 && typeof formdata[ListOfAnswers[0]] == "object"){	
+				//Nu zitten we dus in de array van antwoorden
+				//selecteer het eerste antwoord om volgende vraag te bepalen (soms is laatste antwoord een rest categorie)
+				recordId = formdata[ListOfAnswers[0]][0];
+			}
+			else{
+				//STANDARD, use last answer of list
+				recordId = formdata[ ListOfAnswers[ListOfAnswers.length-1] ];
+				//set the new results
+			}
 			this.ResultSetCachedLatest(recordId);
 			return recordId;
 		}

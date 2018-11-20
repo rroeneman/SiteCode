@@ -109,8 +109,6 @@ export class SharedFormComponent implements OnInit {
       if(form == null) { 
           this.iterateArray(); //do iteration to fill last question of form with data (for backbutton), erased by submit
           this.progressIndicator.emit(100);
-          //this.previousQuestion.emit(this.currentFingerprintKey);
-          console.log("EINDE FORM FP IS: ", this.currentFingerprintKey)
           this.showResult.emit(true); //set current key as previous to allow the back button to go to last question
       } 
       //if there are more questions continue questionnaire
