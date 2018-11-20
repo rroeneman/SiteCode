@@ -40,8 +40,10 @@ let appRoutes: Routes = [
   //{ path: 'decision-support', loadChildren: '../+survey#SurveyModule' },
   //{ path: 'conceptualize', loadChildren: '../+conceptualize#ConceptualizeModule'},
   { path: '404', component: PageNotFoundComponent },
+  { path: 'test1406', loadChildren: '../+test1406module#Test1406Module', data: { preload: false }  },
   { path: 'drmethods', loadChildren: '../+drmethods#DRMethodsModule', data: { preload: false }  },
   { path: 'drimi', loadChildren: '../+drIMI#DRIMIModule', data: { preload: false }  },
+  { path: 'decision-support-prototypes', loadChildren: '../+formPrototypes#formPrototypesModule', data: { preload: false }  },
   { path: '**', redirectTo: '/404' },
 ];
 
