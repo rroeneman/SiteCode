@@ -98,7 +98,7 @@
   object-fit: scale-down;
   -o-object-fit: scale-down;
 }
-#first-main #motto #inner .item div{
+#first-main #motto #inner .item main{
   max-width: 496px;
   letter-spacing: 0.05rem;
 }

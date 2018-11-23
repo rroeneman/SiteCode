@@ -1,3 +1,22 @@
-<h1>Partnerschap Kennisbank</h1>
-<p>Deze ruimte gaat gevuld worden met adviezen en "doe-het-zelf" tools om partnerschappen juridisch goed in te richten.</p>
-<p><a [routerLink]=" ['/juridisch-advies']">Persoonlijk advies</a> is uiteraard wel al mogelijk.</p>
+<div id="KBouter" fxLayout="column" fxLayoutAlign="space-around center">
+    <div id="inner" fxLayout="row" fxLayoutAlign="space-between stretch" class="max-screen-width">
+        <div fxLayout="column" fxLayoutAlign="space-around center" fxFlex="<basis>">
+            <main>
+                <h1>Partnerschap Kennisbank</h1>
+                <p>Deze ruimte gaat gevuld worden met adviezen en "doe-het-zelf" tools om partnerschappen juridisch goed in te richten.</p>
+                <p><a [routerLink]=" ['/juridisch-advies']" title="Jurdisch advies">Persoonlijk advies</a> geven wij uiteraard graag.</p>
+                <a [routerLink]=" ['/kb/Rechtspersonen-overzicht']" title="Homepage Legal LinQ">Test link</a>
+            </main>
+        </div>
+        <nav fxShow fxHide.lt-sm fxFlexAlign="center" >
+            <h3>Lees verder:</h3>            
+            <div [innerHTML]="HTMLcontent.knowledgeLinks"></div>
+        </nav>
+    </div>
+    <nav fxHide fxShow.lt-sm fxFlexAlign="start">
+        <h3>Lees verder:</h3>
+        <div [innerHTML]="HTMLcontent.knowledgeLinks"></div>
+    </nav>
+</div>
+
+

@@ -1,0 +1,30 @@
+/** For 2 components!! */
+/** Zet overal #KBouter voor, vanwege Viewsencapsulation.none die de css wellicht global zal laten gelden  */
+
+
+
+#KBouter #inner{ 
+    width: 100%; 
+}
+
+#KBouter main { 
+    padding: 0 5px 0 5px;  
+    max-width: 696px; 
+}
+
+#KBouter nav{ /*deze is van de mobiel, dus zonder de inner, moet wel als eerste! */
+    padding: 3em 0 3em 0;
+}
+
+#KBouter #inner nav{
+    padding: 0 5px 0 5px;  
+    flex: 1 0 18em;
+}
+
+#KBouter h3{
+    padding: 0 5px 0 5px;
+    font-size: 1.3em;
+}
+#KBouter nav ul {
+    list-style-type: none;
+}

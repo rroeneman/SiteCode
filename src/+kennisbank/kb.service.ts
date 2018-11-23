@@ -16,6 +16,7 @@ export class KennisbankService {
 	 * Id (laatste deel van de url) = JsonFileName
 	 */
 	LoadJsonById(JsonFileName:any){
+		JsonFileName = JsonFileName.toLowerCase(); //filename always lowercase, URL may be in part with upper case
 		var globalFunc = this;
 		return new Promise(function(resolve, reject) { 
 				//if url is not yet loaded, erase all current questions and then continue to loading requested question/answer data
@@ -44,7 +45,7 @@ export class KennisbankService {
 	storeData(key:string, data:any){ return this.localStorageService.set(key, data); }
 	clearStorage(){ return this.localStorageService.clearAll(); } //Clear whole local storage
 	removeItem(JsonFileName:any){return this.localStorageService.remove(JsonFileName);}
-	retrieveItem(JsonFileName:any){return this.localStorageService.get(JsonFileName);}
+	retrieveItem(JsonFileName:any){return this.localStorageService.get(JsonFileName.toLowerCase());}
 
 	/**
 	 * 

@@ -8,7 +8,7 @@ export class AppCustomPreloader implements PreloadingStrategy {  preload(route: 
  * HIER START APP MODULE
  */
 import { NgModule, enableProdMode }      from '@angular/core';
-//enableProdMode();
+enableProdMode();
 
 import { BrowserModule } from '@angular/platform-browser';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -36,11 +36,11 @@ let appRoutes: Routes = [
   { path: 'juridisch-advies', component: JuridischAdviesComponent },
   { path: 'kb', loadChildren: '../+kennisbank#KennisbankModule', data: { preload: true }  },
   //{ path: 'dashboard', loadChildren: '../+dashboard#DashboardModule' },
-  //{ path: 'drp', loadChildren: '../+drp#DRPModule' }, 
+  { path: 'drp', loadChildren: '../+drp#DRPModule' }, 
   //{ path: 'decision-support', loadChildren: '../+survey#SurveyModule' },
   //{ path: 'conceptualize', loadChildren: '../+conceptualize#ConceptualizeModule'},
   { path: '404', component: PageNotFoundComponent },
-  { path: 'test1406', loadChildren: '../+test1406module#Test1406Module', data: { preload: false }  },
+  //{ path: 'test1406', loadChildren: '../+test1406module#Test1406Module', data: { preload: false }  },
   { path: 'drmethods', loadChildren: '../+drmethods#DRMethodsModule', data: { preload: false }  },
   { path: 'drimi', loadChildren: '../+drIMI#DRIMIModule', data: { preload: false }  },
   { path: 'decision-support-prototypes', loadChildren: '../+formPrototypes#formPrototypesModule', data: { preload: false }  },
@@ -61,7 +61,7 @@ let appRoutes: Routes = [
               MatButtonModule, MatDividerModule, MatIconModule, MatMenuModule, MatSidenavModule, MatToolbarModule,
               LocalStorageModule.withConfig({
                 prefix: 'llqdrp',
-                storageType: 'localStorage'
+                storageType: 'sessionStorage'
               }),
               RouterModule.forRoot(appRoutes, { preloadingStrategy: AppCustomPreloader  }) //LET OP: PRELOADING GEBEURT HIER, ZIE https://toddmotto.com/lazy-loading-angular-code-splitting-webpack
             ],

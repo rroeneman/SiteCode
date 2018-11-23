@@ -115,4 +115,8 @@ import { MatButton, MatDivider, MatIcon, MatMenu} from '@angular/material';
 @Component({
   selector: 'JuridischAdvies',
   templateUrl: 'elements.JurAdvies.html',
+  styles: [`
+    #inner div{ padding: 0 5px 0 5px;  }
+    main { max-width: 496px; }
+  `],
 }) export class JuridischAdviesComponent {}

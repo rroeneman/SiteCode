@@ -16,7 +16,7 @@ import { RouterModule, Routes, Resolve, ActivatedRouteSnapshot } from '@angular/
 
 @Injectable() export class JSONloadResolver implements Resolve<Promise<any>>{ constructor(private _kbService: KennisbankService,) {} 
   resolve( route: ActivatedRouteSnapshot ): any { return this._kbService.LoadJsonById(route.params["id"]) 
-    .then(() => {console.log("Remote textdata loaded"); return true;} ) 
+    .then(() => {console.log("Remote textdata loaded for page: ", route.params["id"]); return true;} ) 
     .catch((err:any) => {console.error("JSON data loading failed", err, route.params["id"]); return false;});
   }}
 

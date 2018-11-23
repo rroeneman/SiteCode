@@ -1,8 +1,8 @@
 <!-- HEADER -->
 <header fxLayout="column" fxLayoutAlign="center">
     <!-- TOOLBAR DESKTOP -->
-    <span fxShow fxHide.lt-sm>
-        <mat-toolbar fxLayout="row wrap" fxLayoutAlign="space-between center" [class.sticky]="toolbarIsSticky">
+    <span fxShow fxHide.lt-sm fxLayout="column" fxLayoutAlign="space-around center">
+        <mat-toolbar class="max-screen-width" fxLayout="row wrap" fxLayoutAlign="space-between center" [class.sticky]="toolbarIsSticky">
             <div><a [routerLink]=" ['./']" title="Homepage van Legal LinQ"><img width="100px" height="82px" mat-card-image alt="Legal LinQ" src="../../assets/img/llq_logo_topleft.png" /></a></div>
             <!-- FILLER TOT AAN TOOLBAR RECHTS<span class="example-fill-remaining-space"></span> -->
             <!-- SMALL top TOOLBAR -->
@@ -33,12 +33,10 @@
         <menu-mobile></menu-mobile>
     </mat-sidenav>
 
-    <mat-sidenav-content class="fullscreen" ngClass.lt-sm="fullscreen-mobile" fxLayout="column" fxLayoutAlign="space-between stretch">
-        <main>
-            <router-outlet [ngStyle.lt-sm]="{'padding-top':'55px'}"></router-outlet>
-        </main>
+    <mat-sidenav-content class="fullheight" ngClass.lt-sm="fullheight-mobile" fxLayout="column" fxLayoutAlign="space-between stretch">
+        <div id="router-in-app"><router-outlet [ngStyle.lt-sm]="{'padding-top':'55px'}"></router-outlet></div>
         <footer fxLayout="column" fxLayoutAlign="space-between center" class="z-index-high back-black text-light">
-            <div>Legal LinQ - juridisch advies - specialist zakelijke partnerschappen</div>
+            <div>Legal LinQ - juridisch advies - specialist zakelijk organisatierecht en geschillenbeslechting</div>
             <div><menu-footer></menu-footer></div>
         </footer>  
     </mat-sidenav-content>

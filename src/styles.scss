@@ -141,7 +141,7 @@ body{
  * Make the Component injected by Router Outlet full height: 
  * See: https://blog.thecodecampus.de/material-2-sticky-footer-mat-sidenav/
  */
- main{
+ #router-in-app{
   display: block;
   flex-direction: column;
   > *:not(router-outlet) {
@@ -242,11 +242,15 @@ header #mobile{
   background: inherit;
 }
 
-.fullscreen{
+.fullheight{
   min-height: calc(100vh - 168px);
 }
-.fullscreen-mobile{
+.fullheight-mobile{
   min-height: calc(100vh - 120px);
+}
+
+.max-screen-width{
+  max-width: 1250px;
 }
 
 #first-main menu-main button{

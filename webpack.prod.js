@@ -11,7 +11,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MinifyPlugin = require("babel-minify-webpack-plugin");
 const RobotstxtPlugin = require("robotstxt-webpack-plugin").default;
 const WebpackPwaManifest = require('webpack-pwa-manifest');
-const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
+//const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 //const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const CompressionWebpackPlugin = require("compression-webpack-plugin")
 //var ImageminPlugin = require('imagemin-webpack-plugin').default;
@@ -21,7 +22,7 @@ const path = require('path');
     }
 const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 //const PUBLIC_PATH = 'https://www.legallinq.com/20181106/'; const ExportEntryDir = 'LLQcom'  // webpack needs the trailing slash for output.publicPath
-const PUBLIC_PATH = 'https://www.legallinq.nl/20181113/';  const ExportEntryDir = 'LLQnl'// webpack needs the trailing slash for output.publicPath
+const PUBLIC_PATH = 'https://www.legallinq.nl/20181130/';  const ExportEntryDir = 'LLQnl'// webpack needs the trailing slash for output.publicPath
 //const PUBLIC_PATH = '';
 
 module.exports = {
@@ -147,7 +148,7 @@ module.exports = {
         'ENV': JSON.stringify(ENV)
       }
     }),
- 
+
     new webpack.LoaderOptionsPlugin({
       htmlLoader: {
         minimize: false // workaround for ng2
@@ -195,41 +196,67 @@ module.exports = {
       //template: 'index.forOffline.html'
     }),
 
-    new WebpackPwaManifest({
-      name: 'Legal LinQ',
-      short_name: 'LLQ',
-      ios: true,
-      description: 'Legal LinQ advisor app',
-      theme_color: "#000000",
-      background_color: '#ffffff',
-      icons: [
-          {
-          src:  root('./assets/img/llq_logo_large_icons.png'),
-          sizes: [96, 128, 192, 256, 384, 512] // multiple sizes 
-          },
-          {
-          src:  root('./assets/img/llq_logo_large_icons.png'),
-          size: '1024x1024' // you can also use the specifications pattern 
-          }
-        ]
-    }),
-    
-    new SWPrecacheWebpackPlugin(
-      {
-        cacheId: ExportEntryDir+ '-Main',
-        dontCacheBustUrlsMatching: /\.\w{8}\./,
-        filename: 'service-worker.js',
-        minify: true,
-        navigateFallback: PUBLIC_PATH + 'index.html',
-        staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
-      }
-    ),
-
     // GZIP the files
     new CompressionWebpackPlugin({
       test: /\.js/,
       threshold: 10240,
       minRatio: 0.8
     }),
-  ]
+
+    //this Manifest builder must appear AFTER HtmlWebpackPlugin: https://github.com/arthurbergmz/webpack-pwa-manifest
+    new WebpackPwaManifest({
+      name: 'Legal LinQ',
+      short_name: 'LLQ',
+      ios: true,
+      inject: true,
+      fingerprints: false, //TODO, NOT IDEAL, BUT FIRST SEE IF THIS PLUGIN CAN INJECT .JSON FILE INTO INDEX.HTML AUTOMATICALLY
+      description: 'Legal LinQ advisor app',
+      theme_color: "#000000",
+      background_color: '#ffffff',
+      icons: [
+        {
+          src:  root('./assets/img/llq_logo_large_icons.png'),
+          sizes: [96, 128, 192, 256, 384, 512], // multiple sizes 
+          destination:  path.join("assets", "icons"),
+        },
+        {
+          src:  root('./assets/img/llq_logo_large_icons.png'),
+          size: '1024x1024',
+          destination:  path.join("assets", "icons"),
+        }
+      ]
+    }),
+
+    //Service worker, standaard Google configuratie https://developers.google.com/web/tools/workbox/guides/generate-service-worker/webpack
+    new WorkboxPlugin.GenerateSW({
+      // Exclude images from the precache
+      exclude: [/\.(?:png|jpg|jpeg|svg)$/],
+
+      // Define runtime caching rules.
+      runtimeCaching: [{
+        // Match any request ends with .png, .jpg, .jpeg or .svg.
+        urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
+
+        // Apply a cache-first strategy.
+        handler: 'cacheFirst',
+
+        options: {
+          cacheName: 'images', // Use a custom cache name.
+          expiration: {  maxEntries: 10,  }, // Only cache 10 images.
+        },
+      }],
+    }),
+
+/*    new SWPrecacheWebpackPlugin(
+      {
+        cacheId: ExportEntryDir+ '-Main',
+        dontCacheBustUrlsMatching: /\.\w{8}\./,
+        filename: 'service-worker.js',
+        minify: false,
+        navigateFallback: PUBLIC_PATH + 'index.html',
+        staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
+      }
+    ),
+  */]
+
 }

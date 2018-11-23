@@ -6,7 +6,8 @@ import {OnInit} from '@angular/core';
 
 @Component({
   selector: 'basic-component-select',
-  templateUrl: 'kb.component.html',
+  //templateUrl: 'kb.component.html',
+  template: '<div [innerHTML]="data"></div>',
 })
 export class KBDataComponent implements OnInit  {
   @Input() data: any; 

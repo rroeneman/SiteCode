@@ -15,8 +15,8 @@ export class HomeComponent{
     public media: ObservableMedia, //for 
     private meta: Meta,
   ) { 
-    this.meta.addTag({ name: 'description', content: 'Juridisch adviesbureau gespecialiseerd in zakelijke partnerships' });
+    this.meta.addTag({ name: 'description', content: 'Juridisch adviesbureau voor zakelijke organisatierecht en geschillenbeslechting' });
     this.meta.addTag({ name: 'author', content: 'Legal LinQ' });
-    this.meta.addTag({ name: 'keywords', content: 'Juridisch advies, Partnership, Samenwerken, Joint venture, VOF, Maatschap' });
+    this.meta.addTag({ name: 'keywords', content: 'Juridisch advies, Partnership, Samenwerken, Joint venture, VOF, Maatschap. organisatierecht' });
   }
 }

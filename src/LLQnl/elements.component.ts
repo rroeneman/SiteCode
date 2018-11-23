@@ -75,7 +75,7 @@ import { MatButton, MatDivider, MatIcon, MatMenu} from '@angular/material';
     }
   `],
   template: `
-  <p>Legal LinQ is een boutique juridisch adviesbureau gespecialiseerd in zakelijke partnerships en samenwerkingsverbanden.</p>
+  <p>Legal LinQ is een boutique juridisch adviesbureau gespecialiseerd in zakelijk organisatierecht en geschillenbeslechting.</p>
   <p>Wij zijn gevestigd in Haarlem maar adviseren ook online. Onze <a [routerLink]=" ['kb']" title="Kennisbank partnerschappen">kennisbank</a> helpt u opweg, maar aarzel vooral niet om <a [routerLink]=" ['contact']" title="Contact gegevens">contact</a> op te nemen voor <a [routerLink]=" ['juridisch-advies']" title="Advies">persoonlijk advies</a>.</p>
   <p>De expertise van Legal LinQ brengt passende oplossingen tot stand. Snel, inzichtelijk en duidelijk: voor u en uw bedrijf de grootste zekerheid tegen een redelijk tarief.</p>
   `,
@@ -107,4 +107,8 @@ import { MatButton, MatDivider, MatIcon, MatMenu} from '@angular/material';
 @Component({
   selector: 'JuridischAdvies',
   templateUrl: 'elements.JurAdvies.html',
+  styles: [`
+    #inner div{ padding: 0 5px 0 5px;  }
+    main { max-width: 496px; }
+  `],
 }) export class JuridischAdviesComponent {}

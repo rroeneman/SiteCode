@@ -1,0 +1,19 @@
+<div id="KBouter" fxLayout="column" fxLayoutAlign="space-around center">
+    <div id="inner" fxLayout="row" fxLayoutAlign="space-between stretch" class="max-screen-width">
+        <div fxLayout="column" fxLayoutAlign="space-around center" fxFlex="<basis>">
+                <main (click)="route($event)" [innerHTML]="HTMLcontent.content"></main>  
+        </div>
+
+        <nav fxShow fxHide.lt-sm fxFlexAlign="center" >
+            <h3>Lees verder:</h3>    
+            <div (click)="route($event)" [innerHTML]="HTMLcontent.relatedLinks"></div>
+        </nav>
+    
+    </div>
+    
+    <nav fxHide fxShow.lt-sm fxFlexAlign="start">
+        <h3>Lees verder:</h3>
+        <div (click)="route($event)" [innerHTML]="HTMLcontent.relatedLinks"></div>
+    </nav>
+
+</div>
