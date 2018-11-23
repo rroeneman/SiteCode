@@ -16,6 +16,7 @@ export class KennisbankService {
 	 * Id (laatste deel van de url) = JsonFileName
 	 */
 	LoadJsonById(JsonFileName:any){
+		JsonFileName = JsonFileName.toLowerCase(); //filename always lowercase, URL may be in part with upper case
 		var globalFunc = this;
 		return new Promise(function(resolve, reject) { 
 				//if url is not yet loaded, erase all current questions and then continue to loading requested question/answer data

@@ -30,7 +30,9 @@ let appRoutes: Routes = [
   resolve: { FormDataLoadResolver,
             // ScriptLoadResolver 
             } //voor Shared Form: laadt formdata in localstorage, en laad scripts (Google charts, etc)
-}];
+  },
+  { path: 'drp', loadChildren: '../+drp#DRPModule' },
+];
 
 @NgModule({ 
   declarations: [ ResultformPrototypesComponent,

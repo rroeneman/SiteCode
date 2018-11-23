@@ -56,7 +56,7 @@ let appRoutes: Routes = [
               MatButtonModule, MatDividerModule, MatIconModule, MatMenuModule, MatSidenavModule, MatToolbarModule,
               LocalStorageModule.withConfig({
                 prefix: 'llqdrp',
-                storageType: 'localStorage'
+                storageType: 'sessionStorage'
               }),
               RouterModule.forRoot(appRoutes, { preloadingStrategy: AppCustomPreloader  }) //LET OP: PRELOADING GEBEURT HIER, ZIE https://toddmotto.com/lazy-loading-angular-code-splitting-webpack
             ],
