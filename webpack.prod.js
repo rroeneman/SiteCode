@@ -22,7 +22,11 @@ const path = require('path');
     }
 const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 //const PUBLIC_PATH = 'https://www.legallinq.com/20181106/'; const ExportEntryDir = 'LLQcom'  // webpack needs the trailing slash for output.publicPath
+<<<<<<< HEAD
 const PUBLIC_PATH = 'https://www.legallinq.nl/20181130/';  const ExportEntryDir = 'LLQnl'// webpack needs the trailing slash for output.publicPath
+=======
+const PUBLIC_PATH = 'https://www.legallinq.nl/20181123/';  const ExportEntryDir = 'LLQnl'// webpack needs the trailing slash for output.publicPath
+>>>>>>> 4bfc0b164f486c137f59216c8e79b23b9b225657
 //const PUBLIC_PATH = '';
 
 module.exports = {
